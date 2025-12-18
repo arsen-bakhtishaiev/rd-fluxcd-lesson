@@ -29,18 +29,10 @@ spec:
             periodSeconds: 1
             failureThreshold: 3
           readinessProbe:
-#            httpGet:
-#              path: /readyz
-#              port: 8080
-            exec:
-              command:
-                - sh
-                - -c
-                - test -f /tmp/ready
+            httpGet:
+              path: /readyz
+              port: 8080
             initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 2
             failureThreshold: 3
-          envFrom:
-            - configMapRef:
-                name: course-app-config
